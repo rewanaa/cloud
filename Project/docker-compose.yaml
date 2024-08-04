@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  identity_server:
+    build:
+      context: ./identity_server
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+
+  db_service:
+    build:
+      context: ./database api
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5000"
+    environment:
+      - FLASK_ENV=development
+    depends_on:
+      - identity_server
+
+  frontend_service:
+    build:
+      context: ./new_frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5002:5000"
+    environment:
+      - FLASK_ENV=development
+    depends_on:
+      - identity_server
+      - db_service
+      

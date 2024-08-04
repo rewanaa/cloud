@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: id
+  labels:
+    app: id
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: id
+  template:
+    metadata:
+      labels:
+        app: id
+    spec:
+      containers:
+      - name: id
+        image: legendarynight/project-identity_server:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: FLASK_ENV
+          value: development

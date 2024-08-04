@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: identity
+  labels:
+    app: identity
+spec:
+  containers:
+  - name: identity
+    image: legendarynight/project-identity_server:latest
+    ports:
+    - containerPort: 5000
+    env:
+    - name: FLASK_ENV
+      value: development

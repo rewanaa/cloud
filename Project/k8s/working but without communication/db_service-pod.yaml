@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: db
+  labels:
+    app: db
+spec:
+  containers:
+  - name: db
+    image: legendarynight/project-db_service:latest
+    ports:
+    - containerPort: 5000
+    env:
+    - name: FLASK_ENV
+      value: development
